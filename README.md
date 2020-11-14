@@ -19,6 +19,11 @@ You will need an API Key from Alpha Vantage to use this program. For basic usage
 * Add your Alpha Vantage API key to `api_key.txt` within the quotations.
 * Run `stonks.py` on your python interpreter and automate the given stock valuation process!
 
+### Basic Usage and Output
+Upon running `stonks.py`, below is a sample of basic usage of the program and sample output. <br/>
+###### In this example, MSFT is the ticker of the stock and the desired rate of return is 5% p.a. The fair value of the stock is based upon the rate of return you expect.
+![](images/sample_output.png)
+
 ### References
 Stock valuation approach: https://www.youtube.com/watch?v=ICiwzpQDGCI&ab_channel=NewMoney <br/>
 Requests API: https://requests.readthedocs.io/en/master/ <br/>
