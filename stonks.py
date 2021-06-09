@@ -33,7 +33,7 @@ while data_entered == False:
         #print(equity_growth(latest_equity, oldest_equity, 5))
         #print(fair_value)
 
-    except:
+    except Exception as ex:
         console.print('ERROR! Please try again later!', style = "red")
 
 api_file.close()

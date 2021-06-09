@@ -4,6 +4,8 @@ from alpha_vantage.timeseries import TimeSeries
 from alpha_vantage.fundamentaldata import FundamentalData
 from rich.console import Console
 from rich.table import Table
+from pprint import pprint
+
 api_file = open('api_key.txt', 'r')
 API_URL = "https://www.alphavantage.co/query"
 api_key = str(api_file.readline())
@@ -43,6 +45,8 @@ def get_data(console, ticker):
         #Earnings per Share, Equity Growth, P/E Ratio
     console.print('Fetching data...', style = "blue")
 
+    console.print(api_key)
+
     fd = FundamentalData(key = api_key)
     data = {
          "function": "OVERVIEW",
@@ -54,8 +58,12 @@ def get_data(console, ticker):
 
     #Get Balance Sheet data of past five years
     bs_data, meta = fd.get_balance_sheet_annual(ticker)
-    latest_equity = bs_data[0]['totalShareholderEquity']
-    oldest_equity = bs_data[4]['totalShareholderEquity']
+
+
+    latest_equity = bs_data['totalShareholderEquity'][0]
+    oldest_equity = bs_data['totalShareholderEquity'][4]
+
+    #Calculating equity growth over five years
     eq_gr = calculate_equity_growth(latest_equity, oldest_equity, 5)
 
     #Get TTM EPS & PE Ratio
@@ -63,6 +71,8 @@ def get_data(console, ticker):
     co_data = response.json()
     eps = co_data['EPS']
     per = co_data['PERatio']
+    console.print("EPS from GET: " + eps)
+    console.print("PER from GET: " + per)
 
     #Get Company Details
     company_name = co_data['Name']
@@ -78,6 +88,7 @@ def get_data(console, ticker):
             'trading_price': trading_price}
 
     console.print('Data Fetched!', style = "green bold")
+
 
     return company_data
 
@@ -143,3 +154,4 @@ def display_results(console, ticker, company_data, calculated_data):
     # print('Fair Value: $%.2f' % calculated_data['fair_value'])
     # print('Current Price: $%.2f' % get_price(ticker))
     # print('RECOMMENDATION: %s' % calculated_data['recommendation'])
+
