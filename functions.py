@@ -45,8 +45,6 @@ def get_data(console, ticker):
         #Earnings per Share, Equity Growth, P/E Ratio
     console.print('Fetching data...', style = "blue")
 
-    console.print(api_key)
-
     fd = FundamentalData(key = api_key)
     data = {
          "function": "OVERVIEW",
@@ -71,8 +69,6 @@ def get_data(console, ticker):
     co_data = response.json()
     eps = co_data['EPS']
     per = co_data['PERatio']
-    console.print("EPS from GET: " + eps)
-    console.print("PER from GET: " + per)
 
     #Get Company Details
     company_name = co_data['Name']
