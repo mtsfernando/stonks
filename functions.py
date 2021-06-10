@@ -151,3 +151,6 @@ def display_results(console, ticker, company_data, calculated_data):
     # print('Current Price: $%.2f' % get_price(ticker))
     # print('RECOMMENDATION: %s' % calculated_data['recommendation'])
 
+#The below lines are left for debugging purposes.
+# company_data = get_data(Console(), 'MSFT')
+# print(company_data["company_name"])
