@@ -40,7 +40,7 @@ def calculate_equity_growth(new, old, time):
     growth_rate = (((new/old)**(1/time))-1)
     return growth_rate
 
-def get_data(console, ticker):
+def get_data(console, ticker, ror):
     #This function returns the following details when given a stock ticker/symbol:
         #Earnings per Share, Equity Growth, P/E Ratio
     console.print('Fetching data...', style = "blue")
@@ -79,9 +79,11 @@ def get_data(console, ticker):
 
     trading_price = get_price(ticker)
 
+    calculated_data = calculate_fair_value(console, ticker, eps, eq_gr, per, ror, 5)
+
     company_data = {'company_name': company_name, 'company_country': company_country, 'company_industry': company_industry,
             'company_sector': company_sector, 'company_exchange': company_exchange,'eps':eps, 'eq_gr':eq_gr, 'per': per,
-            'trading_price': trading_price}
+            'trading_price': trading_price, 'calculated_data': calculated_data}
 
     console.print('Data Fetched!', style = "green bold")
 

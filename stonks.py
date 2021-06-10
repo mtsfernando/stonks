@@ -22,13 +22,13 @@ while data_entered == False:
         console.print("Input Error! Please enter valid information.\n", style = "red")
     try:
         #Fetch Data using alphavantage
-        company_data = get_data(console, ticker)
+        company_data = get_data(console, ticker, ror)
 
         #Calculate fair value of the stock ticker
-        calculated_data = calculate_fair_value(console, ticker, company_data['eps'], company_data['eq_gr'], company_data['per'], ror, 5)
+        #calculated_data = calculate_fair_value(console, ticker, company_data['eps'], company_data['eq_gr'], company_data['per'], ror, 5)
 
         #Program output
-        display_results(console, ticker, company_data, calculated_data)
+        display_results(console, ticker, company_data, company_data['calculated_data'])
         #Test print statements
         #print(equity_growth(latest_equity, oldest_equity, 5))
         #print(fair_value)
