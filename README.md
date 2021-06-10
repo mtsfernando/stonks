@@ -10,6 +10,7 @@ Use your package manager to install the following. <br/>
 pip install requests
 pip install alpha_vantage
 pip install rich
+pip install pandas
 ```
 
 ### Setup
